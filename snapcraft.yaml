@@ -1,0 +1,56 @@
+name: umlet-standalone
+title: Giana`s Return
+version: '1.10'
+summary: A worthy UNOFFICIAL sequel of “The Great Giana Sisters” jump and run 
+description: |
+  Evil Swampy and his followers have stolen the magic ruby, which made it once possible for Giana and Maria to return from their dream.
+  Many creatures are after this ruby, but does it really has power, or was it just a coincidence? As this is not bad enough, Swampy fell
+  in love at first sight with Giana’s sister Maria and shamelessly kidnapped her. She simply has been at the wrong place at the wrong
+  time.You will now have to take on the role of Giana and get back the magic ruby. And most important of all, save your beloved sister 
+  Maria and get home save! Good Luck!
+base: core20  
+grade: stable 
+confinement: strict
+architectures: [amd64]
+compression: lzo
+license: Proprietary
+
+apps:
+  giana:
+    command: giana/giana_linux64
+    desktop: usr/share/applications/giana.desktop
+    #extensions: [gnome-3-38]
+    #plugs:
+    #  - home
+
+parts:
+  get-giana:
+    plugin: nil 
+    override-build: |
+      wget https://www.retroguru.com/gianas-return/gianas-return-v.latest-linux.tar.gz   
+      tar xvzf file.tar.gz --directory $SNAPCRAFT_PART_INSTALL
+            
+      chmod +x $SNAPCRAFT_PART_INSTALL/giana/giana_linux64
+      mkdir -p ${SNAPCRAFT_PRIME}/usr/share/applications
+      cp -r ${SNAPCRAFT_PART_INSTALL}/giana/giana.png ${SNAPCRAFT_PRIME}/usr/share/applications/giana.png
+      
+    override-prime: |
+      echo '[Desktop Entry]
+      Encoding=UTF-8
+      Type=Application
+      Name=Giana`s Return
+      GenericName=Giana`s Return
+      Comment=UNOFFICIAL sequel of “The Great Giana Sisters”
+      Exec=giana
+      Icon=usr/share/applications/giana.png
+      Terminal=false
+      Categories=Games;
+      StartupNotify=true' > ${SNAPCRAFT_PRIME}/usr/share/applications/giana.desktop
+      
+      snapcraftctl prime 
+
+  packages:
+    plugin: nil
+    stage-packages:  
+      - freeglut3 
+      - libsdl-mixer1.2 
