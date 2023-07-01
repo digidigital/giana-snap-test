@@ -1,4 +1,4 @@
-name: umlet-standalone
+name: gianasreturn
 title: Giana`s Return
 version: '1.10'
 summary: A worthy UNOFFICIAL sequel of “The Great Giana Sisters” jump and run 
@@ -31,9 +31,10 @@ parts:
       tar xvzf file.tar.gz --directory $SNAPCRAFT_PART_INSTALL
             
       chmod +x $SNAPCRAFT_PART_INSTALL/giana/giana_linux64
-      mkdir -p ${SNAPCRAFT_PRIME}/usr/share/applications
-      cp -r ${SNAPCRAFT_PART_INSTALL}/giana/giana.png ${SNAPCRAFT_PRIME}/usr/share/applications/giana.png
       
+      mkdir -p ${SNAPCRAFT_PRIME}/usr/share/applications
+      wget -P ${SNAPCRAFT_PRIME}/usr/share/applications https://raw.githubusercontent.com/digidigital/giana-snap-test/main/giana256.png
+            
     override-prime: |
       echo '[Desktop Entry]
       Encoding=UTF-8
@@ -41,7 +42,7 @@ parts:
       Name=Giana`s Return
       GenericName=Giana`s Return
       Comment=UNOFFICIAL sequel of “The Great Giana Sisters”
-      Exec=giana
+      Exec=giana -fs
       Icon=usr/share/applications/giana.png
       Terminal=false
       Categories=Games;
