@@ -1,4 +1,4 @@
-name: gianasreturn
+name: templateapp
 title: Giana`s Return
 version: '1.10'
 summary: A worthy UNOFFICIAL sequel of “The Great Giana Sisters” jump and run 
@@ -8,7 +8,7 @@ description: |
   in love at first sight with Giana’s sister Maria and shamelessly kidnapped her. She simply has been at the wrong place at the wrong
   time.You will now have to take on the role of Giana and get back the magic ruby. And most important of all, save your beloved sister 
   Maria and get home save! Good Luck!
-base: core20  
+base: core22  
 grade: stable 
 confinement: strict
 architectures: [amd64]
@@ -16,13 +16,12 @@ compression: lzo
 license: Proprietary
 
 apps:
-  giana:
+  #giana:
+  templateapp:
     command: giana/giana_linux64
     desktop: usr/share/applications/giana.desktop
-    #extensions: [gnome-3-38]
-    #plugs:
-    #  - home
-
+    extensions: [gnome]
+    
 parts:
   get-giana:
     plugin: nil 
@@ -42,14 +41,15 @@ parts:
       Name=Giana`s Return
       GenericName=Giana`s Return
       Comment=UNOFFICIAL sequel of “The Great Giana Sisters”
-      Exec=giana -fs
+      Exec=templateapp -fs
       Icon=usr/share/applications/giana.png
       Terminal=false
       Categories=Games;
       StartupNotify=true' > ${SNAPCRAFT_PRIME}/usr/share/applications/giana.desktop
       
       snapcraftctl prime 
-
+      #Exec=giana -fs
+ 
   packages:
     plugin: nil
     stage-packages:  
