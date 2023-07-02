@@ -38,7 +38,7 @@ parts:
       wget https://www.retroguru.com/gianas-return/gianas-return-v.latest-linux.tar.gz   
       tar xvzf gianas-return-v.latest-linux.tar.gz --directory $SNAPCRAFT_PART_INSTALL
             
-      chmod +x $SNAPCRAFT_PART_INSTALL/giana/giana_linux64
+      # chmod +x $SNAPCRAFT_PART_INSTALL/giana/giana_linux64
 
       echo '#!/bin/bash
       SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
