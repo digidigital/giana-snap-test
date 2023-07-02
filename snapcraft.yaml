@@ -15,14 +15,14 @@ architectures: [amd64]
 compression: lzo
 license: Proprietary
 
-layout:
-  /usr/share/libdrm:
-    bind: $SNAP/usr/share/libdrm
+#layout:
+#  /usr/share/libdrm:
+#    bind: $SNAP/usr/share/libdrm
     
 apps:
   #giana:
   templateapp:
-    command: giana/giana_linux64
+    command: giana/start
     desktop: usr/share/applications/giana.desktop
     extensions: [gnome-3-38]
     plugs:
@@ -34,8 +34,8 @@ apps:
     
 parts:
   get-giana:
-    after:
-      - desktop-glib-only
+    #after:
+    #  - desktop-glib-only
     plugin: nil 
     build-packages:
       - wget
@@ -45,6 +45,13 @@ parts:
       tar xvzf gianas-return-v.latest-linux.tar.gz --directory $SNAPCRAFT_PART_INSTALL
             
       chmod +x $SNAPCRAFT_PART_INSTALL/giana/giana_linux64
+
+      echo '\#!/usr/bin/env bash
+      SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+      cd $SCRIPT_DIR
+      ./giana_linux64 -x2' > $SNAPCRAFT_PART_INSTALL/giana/start
+
+      chmod +x $SNAPCRAFT_PART_INSTALL/giana/start
       
       mkdir -p ${SNAPCRAFT_PRIME}/usr/share/applications
       wget -P ${SNAPCRAFT_PRIME}/usr/share/applications https://raw.githubusercontent.com/digidigital/giana-snap-test/main/giana256.png
@@ -63,15 +70,15 @@ parts:
       StartupNotify=true' > ${SNAPCRAFT_PRIME}/usr/share/applications/giana.desktop
       
       snapcraftctl prime 
-      #Exec=giana -fs
-  desktop-glib-only:
-    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
-    source-subdir: glib-only
-    plugin: make
-    build-packages:
-      - libglib2.0-dev
-    stage-packages:
-      - libglib2.0-bin
+   
+  #desktop-glib-only:
+  #  source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+  #  source-subdir: glib-only
+  #  plugin: make
+  #  build-packages:
+  #    - libglib2.0-dev
+  #  stage-packages:
+  #    - libglib2.0-bin
     
   packages:
     plugin: nil
@@ -81,23 +88,23 @@ parts:
       - freeglut3 
       - libsdl-mixer1.2 
       - libglu1-mesa
-      - libasound2
-      - libbsd0
-      - libcurl4
-      - libgcc1
-      - libjpeg62
-      - libpulse0
-      - libsdl2-2.0-0
-      - libstdc++6
-      - libvorbisfile3
-      - libx11-6
-      - libxau6
-      - libxcb1
-      - libxdmcp6
-      - libxext6
-      - libxpm4
-      - libxxf86vm1
-      - zlib1g
+      #- libasound2
+      #- libbsd0
+      #- libcurl4
+      #- libgcc1
+      #- libjpeg62
+      #- libpulse0
+      #- libsdl2-2.0-0
+      #- libstdc++6
+      #- libvorbisfile3
+      #- libx11-6
+      #- libxau6
+      #- libxcb1
+      #- libxdmcp6
+      #- libxext6
+      #- libxpm4
+      #- libxxf86vm1
+      #- zlib1g
     prime:
       - -usr/share/bug
       - -usr/share/doc
