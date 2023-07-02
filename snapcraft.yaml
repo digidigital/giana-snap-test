@@ -25,6 +25,9 @@ apps:
 parts:
   get-giana:
     plugin: nil 
+    build-packages:
+      - wget
+      - tar
     override-build: |
       wget https://www.retroguru.com/gianas-return/gianas-return-v.latest-linux.tar.gz   
       tar xvzf file.tar.gz --directory $SNAPCRAFT_PART_INSTALL
