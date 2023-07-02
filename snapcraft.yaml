@@ -85,8 +85,3 @@ parts:
       - -usr/share/doc
       - -usr/share/lintian
       - -usr/share/man
-
-  zenity-integration:
-    plugin: nil
-    stage-snaps:
-      - zenity-integration
