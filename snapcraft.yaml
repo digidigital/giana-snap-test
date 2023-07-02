@@ -8,7 +8,7 @@ description: |
   in love at first sight with Giana’s sister Maria and shamelessly kidnapped her. She simply has been at the wrong place at the wrong
   time.You will now have to take on the role of Giana and get back the magic ruby. And most important of all, save your beloved sister 
   Maria and get home save! Good Luck!
-base: core22  
+base: core20  
 grade: stable 
 confinement: strict
 architectures: [amd64]
@@ -20,7 +20,7 @@ apps:
   templateapp:
     command: giana/giana_linux64
     desktop: usr/share/applications/giana.desktop
-    extensions: [gnome]
+    extensions: [gnome-3-38]
     
 parts:
   get-giana:
