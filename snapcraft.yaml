@@ -15,10 +15,6 @@ architectures: [amd64]
 compression: lzo
 license: Proprietary
 
-#layout:
-#  /usr/share/libdrm:
-#    bind: $SNAP/usr/share/libdrm
-    
 apps:
   #giana:
   templateapp:
@@ -34,8 +30,6 @@ apps:
     
 parts:
   get-giana:
-    #after:
-    #  - desktop-glib-only
     plugin: nil 
     build-packages:
       - wget
@@ -46,11 +40,13 @@ parts:
             
       chmod +x $SNAPCRAFT_PART_INSTALL/giana/giana_linux64
 
-      echo '\#!/usr/bin/env bash
+      echo '\#!/bin/bash
       SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
       cd $SCRIPT_DIR
-      ./giana_linux64 -x2' > $SNAPCRAFT_PART_INSTALL/giana/start
-
+      autorandr --force --save original
+      ./giana_linux64 -x2
+      autorandr --change original' > $SNAPCRAFT_PART_INSTALL/giana/start
+     
       chmod +x $SNAPCRAFT_PART_INSTALL/giana/start
       
       mkdir -p ${SNAPCRAFT_PRIME}/usr/share/applications
@@ -70,16 +66,7 @@ parts:
       StartupNotify=true' > ${SNAPCRAFT_PRIME}/usr/share/applications/giana.desktop
       
       snapcraftctl prime 
-   
-  #desktop-glib-only:
-  #  source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
-  #  source-subdir: glib-only
-  #  plugin: make
-  #  build-packages:
-  #    - libglib2.0-dev
-  #  stage-packages:
-  #    - libglib2.0-bin
-    
+      
   packages:
     plugin: nil
     build-packages:
@@ -88,23 +75,7 @@ parts:
       - freeglut3 
       - libsdl-mixer1.2 
       - libglu1-mesa
-      #- libasound2
-      #- libbsd0
-      #- libcurl4
-      #- libgcc1
-      #- libjpeg62
-      #- libpulse0
-      #- libsdl2-2.0-0
-      #- libstdc++6
-      #- libvorbisfile3
-      #- libx11-6
-      #- libxau6
-      #- libxcb1
-      #- libxdmcp6
-      #- libxext6
-      #- libxpm4
-      #- libxxf86vm1
-      #- zlib1g
+      - autorandr
     prime:
       - -usr/share/bug
       - -usr/share/doc
