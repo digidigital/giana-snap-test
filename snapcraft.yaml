@@ -40,11 +40,11 @@ parts:
             
       chmod +x $SNAPCRAFT_PART_INSTALL/giana/giana_linux64
 
-      echo '\#!/bin/bash
+      echo '#!/bin/bash
       SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
       cd $SCRIPT_DIR
       autorandr --force --save original
-      ./giana_linux64 -x2
+      ./giana_linux64 -fs
       autorandr --change original' > $SNAPCRAFT_PART_INSTALL/giana/start
      
       chmod +x $SNAPCRAFT_PART_INSTALL/giana/start
