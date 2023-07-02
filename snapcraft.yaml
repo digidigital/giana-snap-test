@@ -75,6 +75,7 @@ parts:
       - libsdl-mixer1.2 
       - libglu1-mesa
       - autorandr
+      - zenity
     prime:
       - -usr/share/bug
       - -usr/share/doc
