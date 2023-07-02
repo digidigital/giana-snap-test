@@ -15,6 +15,10 @@ architectures: [amd64]
 compression: lzo
 license: Proprietary
 
+layout:
+  /usr/share/libdrm:
+    bind: $SNAP/usr/share/libdrm
+    
 apps:
   #giana:
   templateapp:
@@ -61,6 +65,8 @@ parts:
  
   packages:
     plugin: nil
+    build-packages:
+      - dpkg
     stage-packages:  
       - freeglut3 
       - libsdl-mixer1.2 
@@ -82,3 +88,8 @@ parts:
       - libxpm4
       - libxxf86vm1
       - zlib1g
+    prime:
+      - -usr/share/bug
+      - -usr/share/doc
+      - -usr/share/lintian
+      - -usr/share/man
