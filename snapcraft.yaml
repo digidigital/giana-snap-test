@@ -45,7 +45,7 @@ parts:
       GenericName=Giana`s Return
       Comment=UNOFFICIAL sequel of “The Great Giana Sisters”
       Exec=templateapp -fs
-      Icon=usr/share/applications/giana.png
+      Icon=usr/share/applications/giana256.png
       Terminal=false
       Categories=Games;
       StartupNotify=true' > ${SNAPCRAFT_PRIME}/usr/share/applications/giana.desktop
@@ -58,3 +58,4 @@ parts:
     stage-packages:  
       - freeglut3 
       - libsdl-mixer1.2 
+      - libglu1-mesa
