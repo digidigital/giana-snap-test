@@ -21,6 +21,8 @@ apps:
     command: giana/giana_linux64
     desktop: usr/share/applications/giana.desktop
     extensions: [gnome-3-38]
+    plugs:
+      - audio-playback
     
 parts:
   get-giana:
