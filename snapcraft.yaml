@@ -75,7 +75,7 @@ parts:
       StartupNotify=true' > ${SNAPCRAFT_PRIME}/usr/share/applications/giana.desktop
       
       snapcraftctl prime 
-      
+  
   packages:
     plugin: nil
     stage-packages:  
@@ -83,9 +83,13 @@ parts:
       - libsdl-mixer1.2 
       - libglu1-mesa
       - autorandr
-      - zenity
     prime:
       - -usr/share/bug
       - -usr/share/doc
       - -usr/share/lintian
       - -usr/share/man
+
+  zenity-integration:
+    plugin: nil
+    stage-snaps:
+      - zenity-integration
