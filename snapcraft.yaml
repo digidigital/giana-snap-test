@@ -25,6 +25,8 @@ apps:
       - audio-playback
       - opengl
       - joystick
+      - wayland
+      - x11
     
 parts:
   get-giana:
@@ -63,3 +65,21 @@ parts:
       - freeglut3 
       - libsdl-mixer1.2 
       - libglu1-mesa
+      - libasound2
+      - libbsd0
+      - libcurl4
+      - libgcc1
+      - libglu1-mesa
+      - libjpeg62
+      - libpulse0
+      - libsdl2-2.0-0
+      - libstdc++6
+      - libvorbisfile3
+      - libx11-6
+      - libxau6
+      - libxcb1
+      - libxdmcp6
+      - libxext6
+      - libxpm4
+      - libxxf86vm1
+      - zlib1g
