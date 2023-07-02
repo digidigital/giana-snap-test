@@ -69,8 +69,6 @@ parts:
       
   packages:
     plugin: nil
-    build-packages:
-      - dpkg
     stage-packages:  
       - freeglut3 
       - libsdl-mixer1.2 
