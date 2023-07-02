@@ -30,7 +30,7 @@ parts:
       - tar
     override-build: |
       wget https://www.retroguru.com/gianas-return/gianas-return-v.latest-linux.tar.gz   
-      tar xvzf file.tar.gz --directory $SNAPCRAFT_PART_INSTALL
+      tar xvzf gianas-return-v.latest-linux.tar.gz --directory $SNAPCRAFT_PART_INSTALL
             
       chmod +x $SNAPCRAFT_PART_INSTALL/giana/giana_linux64
       
