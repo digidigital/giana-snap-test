@@ -46,7 +46,7 @@ parts:
       Name=Giana`s Return
       GenericName=Giana`s Return
       Comment=UNOFFICIAL sequel of “The Great Giana Sisters”
-      Exec=templateapp -fs
+      Exec=templateapp 
       Icon=usr/share/applications/giana256.png
       Terminal=false
       Categories=Games;
