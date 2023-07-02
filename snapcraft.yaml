@@ -44,7 +44,7 @@ parts:
       SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
       cd $SCRIPT_DIR
       autorandr --force --save original
-      PARAM=$(zenity --list --radiolist --title="Gina`s Screen Options" --text="Select your preferred display option" --column="Select" --column="Option" --column="Description" TRUE fs Fullscreen False x2 "Resolution x2" False w Window)
+      PARAM=$(zenity --list --radiolist --title="Display Options" --text="Select your preferred display option" --column="Select" --column="Option" --column="Description" TRUE fs Fullscreen False x2 "Resolution x2" False w Window)
       ./giana_linux64 -$PARAM
       autorandr --change original' > $SNAPCRAFT_PART_INSTALL/giana/start
      
