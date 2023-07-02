@@ -69,7 +69,6 @@ parts:
       - libbsd0
       - libcurl4
       - libgcc1
-      - libglu1-mesa
       - libjpeg62
       - libpulse0
       - libsdl2-2.0-0
