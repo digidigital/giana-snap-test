@@ -41,7 +41,7 @@ parts:
       echo '#!/bin/bash
       SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
       cd $SCRIPT_DIR
-      if [[ $XDG_SESSION_TYPE -eq "x11" ]]
+      if [[ ! $XAUTHORITY =~ "wayland" ]]
       then
         autorandr --force --save original
       fi
@@ -49,7 +49,7 @@ parts:
       PARAM=$(zenity --list --radiolist --title="Display Options" --text="Select your preferred display option" --column="Select" --column="Option" --column="Description" TRUE fs Fullscreen False x2 "Resolution x2" False w Window)
       ./giana_linux64 -$PARAM
 
-      if [[ $XDG_SESSION_TYPE -eq "x11" ]]
+      if [[ ! $XAUTHORITY =~ "wayland" ]]
       then
          autorandr --change original
       fi' > $SNAPCRAFT_PART_INSTALL/giana/start
