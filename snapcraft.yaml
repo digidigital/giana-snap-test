@@ -23,6 +23,8 @@ apps:
     extensions: [gnome-3-38]
     plugs:
       - audio-playback
+      - opengl
+      - joystick
     
 parts:
   get-giana:
