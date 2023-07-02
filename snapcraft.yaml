@@ -44,12 +44,10 @@ parts:
       if [[ ! $XAUTHORITY =~ "wayland" ]]
       then
         autorandr --force --save original
-        export DISPLAY=:0 
       fi
             
-      PARAM=$(zenity --list --radiolist --title="Display Options" --text="Select your preferred display option" --column="Select" --column="Option" --column="Description" TRUE fs Fullscreen False x2 "Resolution x2" False w Window)
-      ./giana_linux64 -$PARAM
-
+      ./giana_linux64 -fs
+      
       if [[ ! $XAUTHORITY =~ "wayland" ]]
       then
          autorandr --change original
